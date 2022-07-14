@@ -73,14 +73,36 @@ public class ChapterMain1 {
 //        b.setName("B");
 //        b.start();
 
-        SynObj synObj = new SynObj();
-        ThreadSuspendNotSyn threadSuspendNotSyn = new ThreadSuspendNotSyn();
-        threadSuspendNotSyn.setSynObj(synObj);
-        Thread a = new Thread(threadSuspendNotSyn);
-        a.setName("A");
-        a.start();
-        Thread b = new Thread(threadSuspendNotSyn);
-        b.setName("B");
-        b.start();
+//        SynObj synObj = new SynObj();
+//        ThreadSuspendNotSyn threadSuspendNotSyn = new ThreadSuspendNotSyn();
+//        threadSuspendNotSyn.setSynObj(synObj);
+//        Thread a = new Thread(threadSuspendNotSyn);
+//        a.setName("A");
+//        a.start();
+//        Thread b = new Thread(threadSuspendNotSyn);
+//        b.setName("B");
+//        b.start();
+
+//        ThreadPriorityExtends threadPriorityExtends = new ThreadPriorityExtends();
+//        threadPriorityExtends.setName("A");
+//        threadPriorityExtends.setPriority(Thread.MAX_PRIORITY);
+//        threadPriorityExtends.start();
+
+//        for(int i = 0; i < 3; i++){
+//            ThreadPriorityRuls b = new ThreadPriorityRuls();
+//            b.setName("B" + i);
+//            b.setPriority(1);
+//            b.start();
+//            ThreadPriorityRuls a = new ThreadPriorityRuls();
+//            a.setName("A" + i);
+//            a.setPriority(10);
+//            a.start();
+//        }
+
+        ThreadDeamon threadDeamon = new ThreadDeamon();
+        threadDeamon.setDaemon(true);
+        threadDeamon.start();
+        Thread.sleep(1000);
+        System.out.println("main线程停止，没有了非守护线程，守护线程停止");
     }
 }
