@@ -50,16 +50,33 @@ public class ChapterMain2 {
 //            Thread.sleep(1000);
 //        }
 
-        SynVolatile synVolatile = new SynVolatile();
-        for (int i = 0; i < 100000; i++) {
-            new Thread(synVolatile::addA).start();
+//        SynVolatile synVolatile = new SynVolatile();
+//        for (int i = 0; i < 100000; i++) {
+//            new Thread(synVolatile::addA).start();
+//        }
+//        while (Thread.activeCount() > 2) {
+//            Thread.yield();
+//        }
+//        System.out.println("运算过后A的值：" + synVolatile.a);
+
+        SynObj synObj = new SynObj();
+//        for (int i = 0; i < 1000; i++) {
+//            new Thread(synObj::addI).start();
+//        }
+
+//        for(int i = 0; i < 1000; i++){
+//            new Thread(SynObj::addStaticI).start();
+//        }
+
+        for(int i = 0; i < 1000; i++){
+            new Thread(synObj::synBlock).start();
         }
 
         while (Thread.activeCount() > 2) {
             Thread.yield();
         }
+        System.out.println("synObj运行结果为：" + synObj.getI());
 
-        System.out.println("运算过后A的值：" + synVolatile.a);
 
     }
 }
