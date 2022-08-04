@@ -59,23 +59,31 @@ public class ChapterMain2 {
 //        }
 //        System.out.println("运算过后A的值：" + synVolatile.a);
 
-        SynObj synObj = new SynObj();
+//        SynObj synObj = new SynObj();
 //        for (int i = 0; i < 1000; i++) {
 //            new Thread(synObj::addI).start();
 //        }
 
 //        for(int i = 0; i < 1000; i++){
-//            new Thread(SynObj::addStaticI).start();
+//            SynObj a = new SynObj();
+//            new Thread(()->{
+//                a.addStaticI();
+//            }).start();
 //        }
 
-        for(int i = 0; i < 1000; i++){
-            new Thread(synObj::synBlock).start();
+//        for(int i = 0; i < 1000; i++){
+//            new Thread(synObj::synBlock).start();
+//        }
+
+        for (int i = 0; i < 1000; i++) {
+            new Thread(new SynObjStatic()).start();
         }
 
         while (Thread.activeCount() > 2) {
             Thread.yield();
         }
-        System.out.println("synObj运行结果为：" + synObj.getI());
+//        System.out.println("synObj运行结果为：" + synObj.getI());
+        System.out.println("运行结果为：" + SynObjStatic.getI());
 
 
     }
